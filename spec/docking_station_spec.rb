@@ -14,6 +14,15 @@ describe DockingStation do
   it "the returned bike Object should respond to working method" do
     station = DockingStation.new
     bike = station.release_bike
+    # expect(bike).to be_working
     expect(bike).to respond_to(:working)
   end
+
+  it "The docking station object should have a counter that increases when the dock method is called" do
+    station = DockingStation.new
+    bike = station.release_bike
+    station.dock(bike)
+    expect(station.current_bikes).to be(1)
+  end
+
 end
